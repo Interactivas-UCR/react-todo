@@ -33,3 +33,50 @@ Archivo base de la aplicación
 ```
 /src/index.js
 ```
+
+Los Componentes se crean en la carpeta
+
+```
+src/components
+```
+
+Cada Componente puede ser una clase(State Component):
+
+Ej:
+
+```jsx
+import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
+
+import '../index.scss';
+
+class App extends React.Component {
+	render() {
+		return (
+			<div>
+				<Header />
+				<Footer />
+			</div>
+		);
+	}
+}
+
+export default App;
+```
+
+O puede ser una función(Stateless Component):
+
+```jsx
+import React from 'react';
+
+const Header = props => {
+	return (
+		<header>
+			<h1>Hola mundo</h1>
+		</header>
+	);
+};
+
+export default Header;
+```
