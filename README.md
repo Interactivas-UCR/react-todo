@@ -24,7 +24,7 @@ create-react-app nombre_del_proyecto
 npx create-react-app nombre_del_proyecto
 ```
 
-** El nombre del proyecto debe ser en minúsculas y sin espacios ni guiones**
+**El nombre del proyecto debe ser en minúsculas y sin espacios ni guiones**
 
 > En el caso de usar npx, este paquete no se instala, solo se crea el proyecto
 
