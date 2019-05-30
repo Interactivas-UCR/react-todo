@@ -1,6 +1,6 @@
 Ejemplo básico de React
 
-###Para crear el proyecto se utiliza el paquete:
+### Para crear el proyecto se utiliza el paquete:
 
 [Create React App](https://github.com/facebook/create-react-app).
 
@@ -18,7 +18,7 @@ create-react-app nombre_del_proyecto
 
 ** El nombre del proyecto debe ser en minúsculas y sin espacios ni guiones**
 
-###o se puede utilizar npx, para crear los proyectos
+### O se puede utilizar npx, para crear los proyectos
 
 ```bash
 npx create-react-app nombre_del_proyecto
