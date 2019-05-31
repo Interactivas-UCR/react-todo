@@ -87,6 +87,6 @@ Para correr la aplicación se ejecuta el comando:
 npm start
 ```
 
-###Lectura Opcional
+### Lectura Opcional
 
 [Advanced React Component Patterns : Dumb Component and Smart Component](https://medium.com/@pramonowang/advanced-react-component-patterns-dumb-component-and-smart-component-4cb50fa63aa9)
