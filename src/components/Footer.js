@@ -50,11 +50,7 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="footer-copyright text-center py-3">
-				© 2018 Copyright:
-				<a href="https://mdbootstrap.com/education/bootstrap/">
-					{' '}
-					MDBootstrap.com
-				</a>
+				© 2018 Copyright
 			</div>
 		</footer>
 	);
