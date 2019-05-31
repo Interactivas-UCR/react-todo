@@ -65,7 +65,7 @@ class App extends React.Component {
 export default App;
 ```
 
-O puede ser una función(Stateless Component):
+O puede ser una función(Stateless Component), Estos componentes apican ningula lógica, solo se encargan de representar elementos en el DOM
 
 ```jsx
 import React from 'react';
@@ -86,3 +86,7 @@ Para correr la aplicación se ejecuta el comando:
 ```bash
 npm start
 ```
+
+###Lectura Opcional
+
+[Advanced React Component Patterns : Dumb Component and Smart Component](https://medium.com/@pramonowang/advanced-react-component-patterns-dumb-component-and-smart-component-4cb50fa63aa9)
