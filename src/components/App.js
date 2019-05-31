@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
-import '../index.scss';
+import '../scss/app.scss';
 
 class App extends React.Component {
 	render() {
