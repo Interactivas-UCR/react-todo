@@ -80,3 +80,9 @@ const Header = props => {
 
 export default Header;
 ```
+
+Para correr la aplicación se ejecuta el comando:
+
+```bash
+npm start
+```
