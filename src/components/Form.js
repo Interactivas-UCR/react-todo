@@ -1,16 +1,43 @@
 import React from 'react';
 
 class Form extends React.Component {
+	todoRef = React.createRef();
+
+	handleSubmit = e => {
+		e.preventDefault();
+		console.count("I'm a pickle");
+
+		let text = this.todoRef.current.value;
+
+		if (text === '') return;
+
+		let todo = {
+			id: Date.now(),
+			text: text,
+			isCompleted: false
+		};
+
+		// console.log(todoO);
+		this.props.addTodo(todo);
+		this.todoRef.current.value = '';
+	};
+
 	render() {
 		return (
 			<div>
 				<h3>Ingresa un ToDo</h3>
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<div className="form-group col-4">
 						<label htmlFor="">ToDo</label>
-						<input type="text" className="form-control" />
+						<input
+							type="text"
+							ref={this.todoRef}
+							className="form-control"
+						/>
 					</div>
-					<button className="btn btn-danger" type="button">Send</button>
+					<button className="btn btn-danger" type="submit">
+						Send
+					</button>
 				</form>
 			</div>
 		);

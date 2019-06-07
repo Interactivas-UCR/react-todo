@@ -2,13 +2,20 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Form from './Form';
+import List from './List';
 
 import '../scss/app.scss';
 
 class App extends React.Component {
 	//
 	state = {
-		todos: ['Ser el mejor programador', 'Hacer todas las tareas']
+		todos: []
+	};
+
+	addTodo = todo => {
+		this.setState({
+			todos: [...this.state.todos, todo]
+		});
 	};
 
 	render() {
@@ -17,13 +24,9 @@ class App extends React.Component {
 				<Header title="Mi hermoso Title" />
 
 				<main className="container">
-					<Form />
+					<Form addTodo={this.addTodo} />
 
-					<ul>
-						{this.state.todos.map(todo => {
-							return <li>{todo}</li>;
-						})}
-					</ul>
+					<List todos={this.state.todos} />
 				</main>
 
 				<Footer />
