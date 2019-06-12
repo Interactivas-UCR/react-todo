@@ -67,7 +67,7 @@ class Form extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="mt-5">
 				<h3>Ingresa un ToDo</h3>
 				<form
 					onSubmit={
@@ -76,7 +76,7 @@ class Form extends React.Component {
 							: this.handleUpdate
 					}
 				>
-					<div className="form-group col-4">
+					<div className="form-group col col-sm-12 col-md-6 col-lg-6">
 						<label htmlFor="">ToDo</label>
 						<input
 							type="text"
