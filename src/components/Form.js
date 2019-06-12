@@ -3,10 +3,32 @@ import React from 'react';
 class Form extends React.Component {
 	todoRef = React.createRef();
 
+	state = {
+		text: ''
+	};
+
 	handleSubmit = e => {
 		e.preventDefault();
-		console.count("I'm a pickle");
 
+		// let text = this.todoRef.current.value;
+		let text = this.state.text;
+
+		if (text === '') return;
+
+		let todo = {
+			id: Date.now(),
+			text: text,
+			isCompleted: false
+		};
+
+		this.props.addTodo(todo);
+		// this.todoRef.current.value = '';
+		this.setState({
+			text: ''
+		});
+	};
+
+	handleUpdate = () => {
 		let text = this.todoRef.current.value;
 
 		if (text === '') return;
@@ -17,10 +39,21 @@ class Form extends React.Component {
 			isCompleted: false
 		};
 
-		// console.log(todoO);
-		this.props.addTodo(todo);
-		this.todoRef.current.value = '';
+		console.log(todo);
+		// this.props.updateTodo();
 	};
+
+	textChange = e => {
+		// console.log(e.target.value);
+		// this.todoRef.current.value = e.target.value;
+		this.setState({
+			text: e.target.value
+		});
+	};
+
+	componentWillUpdate(nextProps, nextState) {
+		console.log({ nextProps, nextState });
+	}
 
 	render() {
 		return (
@@ -33,6 +66,8 @@ class Form extends React.Component {
 							type="text"
 							ref={this.todoRef}
 							className="form-control"
+							value={this.state.text}
+							onChange={this.textChange}
 						/>
 					</div>
 					<button className="btn btn-danger" type="submit">

@@ -9,12 +9,52 @@ import '../scss/app.scss';
 class App extends React.Component {
 	//
 	state = {
-		todos: []
+		todos: [],
+		updateTodo: null
 	};
 
 	addTodo = todo => {
 		this.setState({
 			todos: [...this.state.todos, todo]
+		});
+	};
+
+	completedTodo = todo => {
+		let todos = [...this.state.todos];
+
+		todos = todos.map(t => (t.id === todo.id ? todo : t));
+
+		this.setState({
+			todos: todos
+		});
+	};
+
+	deleteTodo = todoId => {
+		let todos = [...this.state.todos];
+
+		todos = todos.filter(t => t.id !== todoId);
+
+		this.setState({
+			todos: todos
+		});
+	};
+
+	setUpdateTodo = todoId => {
+		let todo = this.state.todos.find(t => t.id === todoId);
+
+		this.setState({
+			updateTodo: todo
+		});
+	};
+
+	//completedTodo => Son iguales
+	updateTodo = todo => {
+		let todos = [...this.state.todos];
+
+		todos = todos.map(t => (t.id === todo.id ? todo : t));
+
+		this.setState({
+			todos: todos
 		});
 	};
 
@@ -24,9 +64,18 @@ class App extends React.Component {
 				<Header title="Mi hermoso Title" />
 
 				<main className="container">
-					<Form addTodo={this.addTodo} />
+					<Form
+						addTodo={this.addTodo}
+						todo={this.state.updateTodo}
+						setUpdateTodo={this.setUpdateTodo}
+					/>
 
-					<List todos={this.state.todos} />
+					<List
+						todos={this.state.todos}
+						completedTodo={this.completedTodo}
+						deleteTodo={this.deleteTodo}
+						setUpdateTodo={this.setUpdateTodo}
+					/>
 				</main>
 
 				<Footer />
