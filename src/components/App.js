@@ -18,6 +18,35 @@ class App extends React.Component {
 		});
 	};
 
+	updateTodo = todo => {
+		// console.log(todo.isCompleted);
+		let todos = [...this.state.todos];
+
+		todos = todos.map(t => {
+			if (t.id === todo.id) {
+				return todo;
+			} else {
+				return t;
+			}
+		});
+
+		//todos = [...this.state.todos].map(t => t.id === todo.id ? todo : t);
+
+		this.setState({
+			todos: todos
+		});
+	};
+
+	deleteTodo = id => {
+		let todos = [...this.state.todos];
+
+		todos = todos.filter(t => t.id !== id);
+
+		this.setState({
+			todos
+		});
+	};
+
 	render() {
 		return (
 			<div>
@@ -26,7 +55,11 @@ class App extends React.Component {
 				<main className="container">
 					<Form addTodo={this.addTodo} />
 
-					<List todos={this.state.todos} />
+					<List
+						todos={this.state.todos}
+						updateTodo={this.updateTodo}
+						deleteTodo={this.deleteTodo}
+					/>
 				</main>
 
 				<Footer />

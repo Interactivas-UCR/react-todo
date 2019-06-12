@@ -6,7 +6,14 @@ class List extends React.Component {
 		return (
 			<ul className="list-group mt-5">
 				{this.props.todos.map(todo => {
-					return <ListItem key={todo.id} todo={todo} />;
+					return (
+						<ListItem
+							key={todo.id}
+							todo={todo}
+							updateTodo={this.props.updateTodo}
+							deleteTodo={this.props.deleteTodo}
+						/>
+					);
 				})}
 			</ul>
 		);
