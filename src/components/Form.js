@@ -22,44 +22,60 @@ class Form extends React.Component {
 		};
 
 		this.props.addTodo(todo);
-		// this.todoRef.current.value = '';
+
 		this.setState({
 			text: ''
 		});
 	};
 
-	handleUpdate = () => {
+	handleUpdate = e => {
+		e.preventDefault();
+
 		let text = this.todoRef.current.value;
 
 		if (text === '') return;
 
 		let todo = {
-			id: Date.now(),
+			id: this.props.todo.id,
 			text: text,
-			isCompleted: false
+			isCompleted: this.props.todo.isCompleted
 		};
 
-		console.log(todo);
-		// this.props.updateTodo();
+		this.props.updateTodo(todo);
+		this.setState({
+			text: ''
+		});
 	};
 
 	textChange = e => {
-		// console.log(e.target.value);
-		// this.todoRef.current.value = e.target.value;
 		this.setState({
 			text: e.target.value
 		});
 	};
 
 	componentWillUpdate(nextProps, nextState) {
-		console.log({ nextProps, nextState });
+		// console.log({ nextProps, nextState });
+		if (nextProps.todo !== null) {
+			// console.log(nextProps.todo.text);
+			if (nextProps.todo !== this.props.todo) {
+				this.setState({
+					text: nextProps.todo.text
+				});
+			}
+		}
 	}
 
 	render() {
 		return (
 			<div>
 				<h3>Ingresa un ToDo</h3>
-				<form onSubmit={this.handleSubmit}>
+				<form
+					onSubmit={
+						this.props.todo === null
+							? this.handleSubmit
+							: this.handleUpdate
+					}
+				>
 					<div className="form-group col-4">
 						<label htmlFor="">ToDo</label>
 						<input
@@ -70,9 +86,15 @@ class Form extends React.Component {
 							onChange={this.textChange}
 						/>
 					</div>
-					<button className="btn btn-danger" type="submit">
-						Send
-					</button>
+					{this.props.todo === null ? (
+						<button className="btn btn-danger" type="submit">
+							Crear
+						</button>
+					) : (
+						<button className="btn btn-primary" type="submit">
+							Actualizar
+						</button>
+					)}
 				</form>
 			</div>
 		);

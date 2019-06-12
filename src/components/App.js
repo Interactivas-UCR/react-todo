@@ -49,12 +49,22 @@ class App extends React.Component {
 
 	//completedTodo => Son iguales
 	updateTodo = todo => {
+		console.log(todo);
 		let todos = [...this.state.todos];
 
-		todos = todos.map(t => (t.id === todo.id ? todo : t));
+		todos = todos.map(t => {
+			if (t.id === todo.id) {
+				console.log(todo);
+				return todo;
+			} else {
+				console.log(t);
+				return t;
+			}
+		});
 
 		this.setState({
-			todos: todos
+			todos: todos,
+			updateTodo: null
 		});
 	};
 
@@ -68,6 +78,7 @@ class App extends React.Component {
 						addTodo={this.addTodo}
 						todo={this.state.updateTodo}
 						setUpdateTodo={this.setUpdateTodo}
+						updateTodo={this.updateTodo}
 					/>
 
 					<List
