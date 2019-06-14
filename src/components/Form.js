@@ -43,7 +43,37 @@ class Form extends React.Component {
 
 	componentWillMount = () => {
 		console.log('componentWillMount');
+		this.setState({
+			text: this.props.editTodo !== null ? this.props.editTodo.text : ''
+		});
 	};
+
+	componentWillReceiveProps(nextProps) {
+		console.log('componentWillReceiveProps');
+		// console.log(this.props.editTodo);
+	}
+
+	shouldComponentUpdate = (next_props, next_state) => {
+		console.log('shouldComponentUpdate');
+		// console.log({ next_props, next_state });
+		// console.log(this.props.editTodo);
+		return true;
+	};
+
+	componentWillUpdate(nextProps, nextState) {
+		console.log('componentWillUpdate');
+		// console.log(this.props.editTodo);
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		console.log('componentDidUpdate');
+
+		if (this.props.editTodo !== null) {
+			this.setState({
+				text: this.props.editTodo.text
+			});
+		}
+	}
 
 	render() {
 		return (
