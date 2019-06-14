@@ -27,7 +27,14 @@ class ListItem extends React.Component {
 					</label>
 				</div>
 				<div className="btn-group">
-					<button className="btn btn-primary">Editar</button>
+					<button
+						className="btn btn-primary"
+						onClick={() =>
+							this.props.setEditTodo(this.props.todo.id)
+						}
+					>
+						Editar
+					</button>
 					<button
 						className="btn btn-danger"
 						onClick={() =>

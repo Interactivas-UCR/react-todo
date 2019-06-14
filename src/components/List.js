@@ -12,6 +12,7 @@ class List extends React.Component {
 							todo={todo}
 							updateTodo={this.props.updateTodo}
 							deleteTodo={this.props.deleteTodo}
+							setEditTodo={this.props.setEditTodo}
 						/>
 					);
 				})}

@@ -22,6 +22,8 @@ class Form extends React.Component {
 		this.todoRef.current.value = '';
 	};
 
+	handleChange = () => {};
+
 	render() {
 		return (
 			<div>
@@ -33,7 +35,14 @@ class Form extends React.Component {
 							type="text"
 							ref={this.todoRef}
 							className="form-control"
+							value={
+								this.props.editTodo != null
+									? this.props.editTodo.text
+									: ''
+							}
+							onChange={this.handleChange}
 						/>
+						{/* value={this.state.text} */}
 					</div>
 					<button className="btn btn-danger" type="submit">
 						Send
