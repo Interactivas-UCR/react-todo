@@ -1,13 +1,19 @@
 import React from 'react';
 
 class Form extends React.Component {
-	todoRef = React.createRef();
+	// todoRef = React.createRef();
+
+	state = {
+		text: ''
+	};
 
 	handleSubmit = e => {
 		e.preventDefault();
 		console.count("I'm a pickle");
 
-		let text = this.todoRef.current.value;
+		// let text = this.todoRef.current.value;
+		let text = this.state.text;
+		// let { text } = this.state;
 
 		if (text === '') return;
 
@@ -19,10 +25,25 @@ class Form extends React.Component {
 
 		// console.log(todoO);
 		this.props.addTodo(todo);
-		this.todoRef.current.value = '';
+		// this.todoRef.current.value = '';
+
+		//Siempre que se quiere manipular el stado se debe de usar el
+		// metodo setState
+		this.setState({
+			text: ''
+		});
 	};
 
-	handleChange = () => {};
+	handleChange = e => {
+		// console.log(e.target.value);
+		this.setState({
+			text: e.target.value
+		});
+	};
+
+	componentWillMount = () => {
+		console.log('componentWillMount');
+	};
 
 	render() {
 		return (
@@ -35,14 +56,9 @@ class Form extends React.Component {
 							type="text"
 							ref={this.todoRef}
 							className="form-control"
-							value={
-								this.props.editTodo != null
-									? this.props.editTodo.text
-									: ''
-							}
+							value={this.state.text}
 							onChange={this.handleChange}
 						/>
-						{/* value={this.state.text} */}
 					</div>
 					<button className="btn btn-danger" type="submit">
 						Send

@@ -81,6 +81,8 @@ const Header = props => {
 export default Header;
 ```
 
+Siempre que se quiere manipular el stado se debe de usar el método setState
+
 Para correr la aplicación se ejecuta el comando:
 
 ```bash
@@ -92,3 +94,7 @@ npm start
 [Advanced React Component Patterns : Dumb Component and Smart Component](https://medium.com/@pramonowang/advanced-react-component-patterns-dumb-component-and-smart-component-4cb50fa63aa9)
 
 [Sintáxis Spread](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Sintaxis_Spread)
+
+[Ciclo de vida](https://medium.com/@pedroparra/react-js-y-el-ciclo-de-vida-de-los-componentes-5d083e5089c6)
+
+[Lifecycle](https://reactjs.org/docs/react-component.html)
