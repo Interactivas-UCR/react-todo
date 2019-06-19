@@ -34,7 +34,8 @@ class App extends React.Component {
 		//todos = [...this.state.todos].map(t => t.id === todo.id ? todo : t);
 
 		this.setState({
-			todos: todos
+			todos: todos,
+			editTodo: null
 		});
 	};
 
@@ -51,7 +52,7 @@ class App extends React.Component {
 	setEditTodo = id => {
 		let todo = [...this.state.todos].find(t => t.id === id);
 		this.setState({
-			editTodo: todo
+			editTodo: todo === undefined ? null : todo
 		});
 	};
 
@@ -64,6 +65,7 @@ class App extends React.Component {
 					<Form
 						addTodo={this.addTodo}
 						editTodo={this.state.editTodo}
+						updateTodo={this.updateTodo}
 					/>
 
 					<List

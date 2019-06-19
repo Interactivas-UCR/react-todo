@@ -17,14 +17,25 @@ class Form extends React.Component {
 
 		if (text === '') return;
 
-		let todo = {
-			id: Date.now(),
-			text: text,
-			isCompleted: false
-		};
+		let todo;
+
+		if (this.props.editTodo == null) {
+			todo = {
+				id: Date.now(),
+				text: text,
+				isCompleted: false
+			};
+			this.props.addTodo(todo);
+		} else {
+			todo = {
+				...this.props.editTodo,
+				text: text
+			};
+			this.props.updateTodo(todo);
+		}
 
 		// console.log(todoO);
-		this.props.addTodo(todo);
+
 		// this.todoRef.current.value = '';
 
 		//Siempre que se quiere manipular el stado se debe de usar el
@@ -42,36 +53,29 @@ class Form extends React.Component {
 	};
 
 	componentWillMount = () => {
-		console.log('componentWillMount');
-		this.setState({
-			text: this.props.editTodo !== null ? this.props.editTodo.text : ''
-		});
+		// console.log('componentWillMount');
 	};
 
 	componentWillReceiveProps(nextProps) {
-		console.log('componentWillReceiveProps');
-		// console.log(this.props.editTodo);
+		// console.log('componentWillReceiveProps');
 	}
 
 	shouldComponentUpdate = (next_props, next_state) => {
-		console.log('shouldComponentUpdate');
-		// console.log({ next_props, next_state });
-		// console.log(this.props.editTodo);
+		// console.log('shouldComponentUpdate');
 		return true;
 	};
 
 	componentWillUpdate(nextProps, nextState) {
-		console.log('componentWillUpdate');
-		// console.log(this.props.editTodo);
+		// console.log('componentDidUpdate');
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		console.log('componentDidUpdate');
-
-		if (this.props.editTodo !== null) {
-			this.setState({
-				text: this.props.editTodo.text
-			});
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.editTodo !== this.props.editTodo) {
+			if (this.props.editTodo !== null) {
+				this.setState({
+					text: this.props.editTodo.text
+				});
+			}
 		}
 	}
 
@@ -80,7 +84,7 @@ class Form extends React.Component {
 			<div>
 				<h3>Ingresa un ToDo</h3>
 				<form onSubmit={this.handleSubmit}>
-					<div className="form-group col-4">
+					<div className="form-group col col-sm-12 col-md-6 col-lg-6">
 						<label htmlFor="">ToDo</label>
 						<input
 							type="text"
