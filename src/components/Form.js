@@ -94,9 +94,16 @@ class Form extends React.Component {
 							onChange={this.handleChange}
 						/>
 					</div>
-					<button className="btn btn-danger" type="submit">
-						Send
-					</button>
+
+					{this.props.editTodo ? (
+						<button className="btn btn-primary" type="submit">
+							Editar
+						</button>
+					) : (
+						<button className="btn btn-success" type="submit">
+							Agregar
+						</button>
+					)}
 				</form>
 			</div>
 		);
