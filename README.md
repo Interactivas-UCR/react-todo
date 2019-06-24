@@ -98,3 +98,5 @@ npm start
 [Ciclo de vida](https://medium.com/@pedroparra/react-js-y-el-ciclo-de-vida-de-los-componentes-5d083e5089c6)
 
 [Lifecycle](https://reactjs.org/docs/react-component.html)
+
+[Aprendiendo React entrenando como Goku](https://arepa.dev/aprende-react-entrenando-como-goku/)
